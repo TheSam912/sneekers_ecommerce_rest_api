@@ -1,13 +1,21 @@
 const express = require("express")
 const app = express()
-const dotenv = require('dotenv')
 const port = 3000
 const mongoose = require("mongoose");
-dotenv.config()
+const productRouter = require("./routes/products")
+
+app.use(express.json({limit: '10mb'}))
+app.use(express.urlencoded({limit: '10mb', extended: true}))
+app.use('/api/products', productRouter)
+
+
 mongoose
-    .connect("mongodb+srv://thesamnolan1998:Sobhan@3393@clustersam.sjoijhb.mongodb.net/sneekers")
+    .connect("mongodb+srv://admin:33931376@samuser.ivixmzg.mongodb.net/ecommerce")
     .then(() => {
         console.log("connected to DB !!!!!");
+        app.listen(port, () => {
+            console.log("connected to port 3000");
+        });
     })
     .catch(() => {
         console.log("catch");

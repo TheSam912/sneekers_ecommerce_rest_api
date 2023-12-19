@@ -6,7 +6,7 @@ const productSchema = mongoose.Schema({
     imageUrl: {type: [String], require: true},
     oldPrice: {type: String, require: true},
     sizes: {
-        type: {size: {type: String, require: true}, isSelected: {type: Boolean, require: false, default: false}}
+        type: [{size: {type: String, require: true}, isSelected: {type: Boolean, require: false, default: false}}]
     },
     price: {type: String, require: true},
     description: {type: String, require: true},
